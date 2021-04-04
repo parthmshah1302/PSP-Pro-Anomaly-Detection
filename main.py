@@ -5,7 +5,7 @@ delta2=1
 delta3=2
 delta4=4
 lamda = np.linspace(0, 30, 1000)
-
+# kavya demoo 
 
 
 power=1/6
