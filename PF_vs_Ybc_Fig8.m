@@ -1,5 +1,4 @@
 close all;
-clear all;
 clc
 M=30;
 Pf_ac=0.0001:0.001:0.1;
@@ -7,7 +6,7 @@ e=100;
 Y_bc_thr=[1:1:30];
 Y_bc_thr=5;
 lambda=[0:0.1:1];
-lambda_bar=0.001;%This is a mistery. Check how to obtain from eqn 14
+lambda_bar=0.001;%This is a mystery. Check how to obtain from eqn 14
 
 z_init=zeros([1 30]);
 z_init(1)=0;
@@ -24,7 +23,7 @@ for m=1:length(Y_bc_thr) %initially 30 length
     z=p*pf + z_init(m);
     i=i+1;
     z_init(m) = z; %ideally it should be z_init(m+1)
-    plot(Y_bc_thr,z);  ...
+    % plot(Y_bc_thr,z);  ...
 end
 
 
@@ -38,39 +37,39 @@ for m=1:M
  
    z1=p.*pf ;
     i=i+1;    ...
-   plot(Y_bc_thr,z1);
+%    plot(Y_bc_thr,z1);
 end
-
-
-for m=1:M
-    Pf_ac=0.01;
-    m_n=m*lambda_bar+5;
-    i=1;
-    pf = (nCk(30,m)/factorial(m)).*((1-Pf_ac(i)).^(30-m)).*(Pf_ac(i)).^m;
-   
-    p=(1-(gammainc(Y_bc_thr,m_n)))/(factorial(Y_bc_thr(m)));
- 
-   z2=p.*pf ;
-    i=i+1; 
- plot(Y_bc_thr,z2);   ...
-   
-end
-
-
-for m=1:M
-    Pf_ac=0.1;
-   % Y_bc_thr=[0:3:30];
-    m_n=m*lambda_bar+5;
-    i=1;
-    pf = (nCk(30,m)/factorial(m)).*((1-Pf_ac(i)).^(30-m)).*(Pf_ac(i)).^m;
-   
-    p=(1-(gammainc(Y_bc_thr,m_n)))/(factorial(Y_bc_thr(m)));
- 
-   z3=p.*pf ;
-    i=i+1;    
-    plot(Y_bc_thr,z3);...
-   
-end
+% 
+% 
+% for m=1:M
+%     Pf_ac=0.01;
+%     m_n=m*lambda_bar+5;
+%     i=1;
+%     pf = (nCk(30,m)/factorial(m)).*((1-Pf_ac(i)).^(30-m)).*(Pf_ac(i)).^m;
+%    
+%     p=(1-(gammainc(Y_bc_thr,m_n)))/(factorial(Y_bc_thr(m)));
+%  
+%    z2=p.*pf ;
+%     i=i+1; 
+%  plot(Y_bc_thr,z2);   ...
+%    
+% end
+% 
+% 
+% for m=1:M
+%     Pf_ac=0.1;
+%    % Y_bc_thr=[0:3:30];
+%     m_n=m*lambda_bar+5;
+%     i=1;
+%     pf = (nCk(30,m)/factorial(m)).*((1-Pf_ac(i)).^(30-m)).*(Pf_ac(i)).^m;
+%    
+%     p=(1-(gammainc(Y_bc_thr,m_n)))/(factorial(Y_bc_thr(m)));
+%  
+%    z3=p.*pf ;
+%     i=i+1;    
+%     plot(Y_bc_thr,z3);...
+%    
+% end
 
 plot(Y_bc_thr,z_init);
 hold on;
